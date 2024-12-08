@@ -1,0 +1,136 @@
+﻿@{
+    ViewData["Title"] = "About";
+}
+
+<!-- Page-specific styles -->
+<style>
+    body {
+        font-family: 'Montserrat', sans-serif; /* Set Montserrat as the page font */
+        background-color: #895129; /* Dark brown background color */
+        color: white; /* Text color for readability */
+        padding: -5px; /* Reduced page padding */
+    }
+
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        background-color: #B5C18E; /* Updated card background color */
+        padding: 20px;
+        margin-top: 60px; /* Added space above the card */
+    }
+
+    .card-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: black;
+        text-align: center;
+        margin-bottom: 40px;
+        margin-top: 0;
+    }
+
+    .about-content {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: black;
+    }
+
+    .highlight {
+        font-weight: bold;
+        color: #d1a25d; /* Accent color */
+    }
+
+    .btn {
+        background-color: #000 !important; /* Black background for buttons */
+        border-color: #000 !important; /* Black border */
+        color: #fff !important; /* White text color */
+        text-align: center; /* Center the text */
+        padding: 10px 15px; /* Decreased padding for smaller buttons */
+        font-size: 1rem;
+        border-radius: 5px; /* Rounded corners */
+        max-width: 200px; /* Ensure buttons don’t get too wide */
+        transition: all 0.3s ease; /* Smooth transition for hover effect */
+    }
+
+        .btn:hover {
+            background-color: #333 !important; /* Darker black on hover */
+            border-color: #333 !important; /* Darker black border on hover */
+            transform: scale(1.05); /* Slightly enlarge the button on hover */
+        }
+
+    /* Flexbox layout for buttons */
+    .buttons-row {
+        display: flex;
+        justify-content: center; /* Center the buttons */
+        gap: 10px; /* Gap between the buttons */
+        margin-top: 20px; /* Add some space above buttons */
+    }
+
+    /* Card style for How to Use section */
+    .how-to-use {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px; /* Space between individual cards */
+    }
+
+        .how-to-use .how-to-card {
+            background-color: #B5C18E;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: black; /* Change text color to black */
+            margin-bottom: 40px; /* Added space below the card */
+        }
+
+        .how-to-use h3 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: black;
+            margin-bottom: 20px;
+        }
+</style>
+
+<!-- Card content -->
+<div class="card">
+    <h1 class="card-title">@ViewData["Title"]</h1>
+
+    <div class="about-content">
+        <p>Welcome to our website! We are thrilled to have you here. This site is dedicated to helping you manage and keep track of the books you have read and discover new ones. Our goal is to create an interactive and user-friendly platform where readers can create and track their reading checklists and engage with the content.</p>
+
+        <p>On this site, you can:</p>
+        <ul>
+            <li><span class="highlight">Add books</span> to your reading list.</li>
+            <li><span class="highlight">Track progress</span> on books you've read.</li>
+            <li><span class="highlight">Edit your list</span> and explore new genres and authors.</li>
+        </ul>
+
+        <p>We believe that reading is an essential part of personal growth and learning. Whether you're a casual reader or a book enthusiast, our platform aims to make your reading experience organized and enjoyable.</p>
+
+        <div class="buttons-row">
+            <a href="/Home/Index" class="btn btn-secondary">Back to Home</a>
+            <a href="/Riddles/Index" class="btn btn-secondary">Books List</a>
+        </div>
+    </div>
+</div>
+
+<!-- New section for How to Use the Website (Card Style for Each <li>) -->
+<div class="how-to-use">
+    <h3>How to Use This Website</h3>
+    <p>This website is designed to make your reading journey enjoyable and easy. Here's how you can make the most out of it:</p>
+
+    <!-- Individual Cards for Each List Item -->
+    <div class="how-to-card">
+        <strong>Add Books:</strong> Start by adding books to your reading list. Simply click on "Add Book" and enter the book title and genre.
+    </div>
+
+    <div class="how-to-card">
+        <strong>Explore Genres:</strong> Browse books by genre to find new reading material or discover your favorite authors.
+    </div>
+
+    <div class="how-to-card">
+        <strong>Edit Your List:</strong> You can always modify your reading list, remove books, or add more as your collection grows.
+    </div>
+</div>

@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - DBLS</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"> <!-- Add Bootstrap Icons -->
+    <style>
+        /* Navbar styling */
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.7); /* Set navbar background to black */
+            font-family: 'Montserrat', sans-serif; /* Montserrat font */
+            border-radius: 25px; /* Rounded edges */
+            position: fixed; /* Sticky navbar */
+            top: 20px; /* Space from top */
+            left: 20px; /* Space from left */
+            right: 20px; /* Space from right */
+            z-index: 1000; /* Ensure it's above other elements */
+            padding: 10px; /* Add inner padding */
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
+
+        /* Body padding to prevent content overlap */
+        body {
+            padding-top: 100px; /* Adjust to navbar height */
+            min-height: 100vh; /* Ensure the body takes full height */
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 0; /* Remove bottom margin */
+        }
+
+        /* Navbar links */
+        .navbar .nav-link {
+            color: white !important; /* Set text color to white */
+            margin-left: 20px; /* Space between links */
+            transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+        }
+
+            .navbar .nav-link:hover {
+                color: #B5C18E; /* Blue hover color */
+                transform: translateY(-2px); /* Slight upward movement */
+            }
+
+        /* Navbar brand */
+        .navbar-brand {
+            font-weight: bold;
+            color: white !important; /* Set brand text color to white */
+            padding-left: 40px; /* Add padding to move text to the right */
+        }
+
+            .navbar-brand:hover {
+                color: #B5C18E !important; /* Blue hover color for brand */
+            }
+
+        /* Dropdown menu */
+        .dropdown-menu {
+            background-color: #000000; /* Black dropdown background */
+        }
+
+            .dropdown-menu .dropdown-item {
+                color: white; /* White text for dropdown items */
+            }
+
+                .dropdown-menu .dropdown-item:hover {
+                    background-color: #333333; /* Dark gray hover background */
+                }
+
+        /* Toggler button for mobile */
+        .navbar-toggler {
+            border-color: transparent; /* Remove border on mobile */
+        }
+
+        /* Collapsed navbar menu on mobile */
+        .navbar-collapse {
+            justify-content: flex-end; /* Align links to the right */
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: black; /* Black background */
+            color: white; /* White text */
+            padding: 20px 0; /* Top and bottom padding */
+            position: relative;
+            width: 100%;
+            margin-top: auto; /* Pushes the footer to the bottom */
+        }
+
+            footer a {
+                color: white; /* White color for footer links */
+                text-decoration: none;
+            }
+
+                footer a:hover {
+                    color: #B5C18E; /* Blue hover color for links */
+                }
+
+                /* Add a separator between footer text links only */
+                footer a + a:before {
+                    content: "|";
+                    padding: 0 10px;
+                    color: white; /* Separator color */
+                }
+
+        /* Styling for social icons without separator */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+            .social-icons i {
+                font-size: 25px;
+                color: white;
+                margin-right: 15px; /* Space between icons */
+            }
+
+                .social-icons i:last-child {
+                    margin-right: 0; /* Remove right margin for last icon */
+                }
+
+                .social-icons i:hover {
+                    color: #B5C18E; /* Change color on hover */
+                }
+
+        /* Ensure the footer stays at the bottom */
+        .content {
+            flex: 1;
+        }
+
+        /* Styling for the "All rights reserved" text */
+        .rights-reserved {
+            font-size: 14px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <!-- Navbar brand -->
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">DBLS</a>
+
+                <!-- Navbar toggler -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navbar links -->
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav ms-auto">
+                        <!-- Align links to the right -->
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Riddles" asp-action="Index">Books List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">About</a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container content">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <!-- Social Media Icons -->
+            <div class="social-icons">
+                <a href="#" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a href="#" target="_blank"><i class="bi bi-twitter"></i></a>
+                <a href="#" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
+            </div>
+
+            <!-- Footer Links -->
+            <div class="text-center">
+                <a href="#" target="_blank">Privacy Policy</a>
+                <a href="#" target="_blank">Terms</a>
+                <a href="#" target="_blank">Help & Support</a>
+            </div>
+
+            <!-- All rights reserved text -->
+            <div class="text-center rights-reserved">
+                &copy; 2024 DBLS. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item dropdown">
+            <!-- Use the hamburger icon instead of user icon -->
+            <a class="nav-link dropdown-toggle text-dark" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-list" style="font-size: 30px;"></i> <!-- Triple line (hamburger) icon -->
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li>
+                    <span class="dropdown-item text-center w-100" style="color: white;">Hello @User.Identity?.Name!</span> <!-- Display username inside the dropdown, centered, with white text -->
+                </li>
+                <li><hr class="dropdown-divider"></li> <!-- Divider -->
+                <li>
+                    <a class="dropdown-item text-center w-100" asp-area="Identity" asp-page="/Account/Manage/Index">Manage Account</a> <!-- Manage Account link centered -->
+                </li>
+                <li>
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <!-- Custom Logout button with extra space and centered inside the dropdown -->
+                        <button type="submit" class="dropdown-item logout-btn" style="background-color: black; color: white; border-radius: 5px; padding: 8px 12px; font-size: 14px; margin-top: 10px; margin-left: auto; margin-right: auto; width: 80%; text-align: center;">
+                            Logout
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
+    }
+</ul>
+
+<!-- Add the following styles for hover effect -->
+<style>
+    .logout-btn {
+        transition: background-color 0.3s, transform 0.2s ease;
+    }
+
+        .logout-btn:hover {
+            background-color: #333; /* Darken the background color */
+            transform: scale(1.05); /* Slightly enlarge the button */
+        }
+</style>
